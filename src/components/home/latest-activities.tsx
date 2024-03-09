@@ -14,6 +14,7 @@ const LatestActivities = () => {
  
     const { data: audit, isLoading: isLoadingAudit, isError, error} = useList({
         resource: 'audits',
+        pagination: {pageSize: 5},
         meta: {
             gqlQuery: DASHBOARD_LATEST_ACTIVITIES_AUDITS_QUERY
         }

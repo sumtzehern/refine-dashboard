@@ -19,6 +19,7 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { authProvider } from "./providers";
 import Layout from "./components/layout";
 import { resources } from "./config/resources";
+import CompanyList from "./pages/company/list";
  
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
                   }
                 >
                   <Route index element={<Home />} />
+                  <Route path="/companies" element={<CompanyList />} />
                 </Route>
               </Routes>
               <RefineKbar />
