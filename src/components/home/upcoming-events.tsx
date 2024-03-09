@@ -37,7 +37,7 @@ const UpcomingEvents = () => {
       <Card 
         style={{ height: '100%' }}
         headStyle={{padding: '8px 16px'}}
-        bodyStyle={{ padding: '24px 24px 24px 24px'}}
+        bodyStyle={{ padding: '18px 24px 22px 24px'}}
         title={
             <div 
                 style={{
@@ -68,7 +68,7 @@ const UpcomingEvents = () => {
                         const renderDate = getDate(item.startDate, item.endDate)
 
                         return (
-                            <List.Item>
+                            <List.Item >
                                 <List.Item.Meta 
                                     avatar={<Badge color={item.color} />}
                                     title={<Text size="xs">{renderDate}</Text>}
