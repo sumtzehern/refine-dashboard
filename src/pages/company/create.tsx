@@ -22,7 +22,7 @@ const Create = () => {
     const { formProps, modalProps } = useModalForm({
         action: 'create',
         defaultVisible: true,
-        resource: 'false',
+        resource: 'companies',
         redirect: false,
         mutationMode: 'pessimistic',
         onMutationSuccess: goToListPage,
