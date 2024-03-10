@@ -2,7 +2,7 @@ import { Authenticated, GitHubBanner, Refine, WelcomePage } from "@refinedev/cor
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
-import { useNotificationProvider } from "@refinedev/antd";
+import { Edit, useNotificationProvider } from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
 
 import { dataProvider, liveProvider} from "./providers";
@@ -20,6 +20,8 @@ import { authProvider } from "./providers";
 import Layout from "./components/layout";
 import { resources } from "./config/resources";
 import CompanyList from "./pages/company/list";
+import Create from "./pages/company/create";
+import EditPage from "./pages/company/edit";
  
 
 function App() {
@@ -60,7 +62,13 @@ function App() {
                   }
                 >
                   <Route index element={<Home />} />
-                  <Route path="/companies" element={<CompanyList />} />
+
+                  <Route path="/companies">
+                    <Route index element={<CompanyList />}/>
+                    <Route path=":id" element={<Create />}/> // need to figure out why not new
+                    <Route path="edit/:id" element={<EditPage />}/> 
+                  </Route>
+                  
                 </Route>
               </Routes>
               <RefineKbar />

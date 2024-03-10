@@ -9,7 +9,7 @@ import { Company } from "@/graphql/schema.types";
 import { currencyNumber } from "@/utilities";
 
 
-const CompanyList = () => {
+const CompanyList = ({ children }: React.PropsWithChildren) => {
 
   const go = useGo();
   const { tableProps, filters } = useTable({
@@ -49,6 +49,7 @@ const CompanyList = () => {
   })
 
   return (
+    <div>
     <List
     breadcrumb={false}
     headerButtons={() => (
@@ -68,58 +69,56 @@ const CompanyList = () => {
       />
     )}
     >
-
-      <Table
-        {...tableProps}
-        pagination={{
-          ...tableProps.pagination,
-        }}
-      >
-        <Table.Column<Company>
-          dataIndex="name"
-          title="Company Title"
-          defaultFilteredValue={getDefaultFilter('id', filters)}
-          filterIcon={<SearchOutlined style={{  fontSize: '16px'}}/>}
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Input placeholder="Search Company"/>
-            </FilterDropdown>
+  <Table
+          {...tableProps}
+          pagination={{
+            ...tableProps.pagination,
+          }}
+        >
+          <Table.Column<Company>
+            dataIndex="name"
+            title="Company Title"
+            defaultFilteredValue={getDefaultFilter('id', filters)}
+            filterIcon={<SearchOutlined style={{  fontSize: '16px'}}/>}
+            filterDropdown={(props) => (
+              <FilterDropdown {...props}>
+                <Input placeholder="Search Company"/>
+              </FilterDropdown>
+            )}
+            render={(value, record) => (
+              <Space>
+                <CustomAvatar shape="square" name={record.name} src={record.avatarUrl}/>
+                <Text style={{ whiteSpace: 'nowrap'}}>
+                  {record.name}
+                </Text>
+              </Space>
+            )}
+          />
+        <Table.Column<Company> 
+          dataIndex="totalRevenue"
+          title="Open deals amount"
+          render={(value, company) => (
+            <Text>
+              {currencyNumber(company?.dealsAggregate?.[0].sum?.value || 0 )}
+            </Text>
           )}
-          render={(value, record) => (
+        />
+
+        <Table.Column<Company> 
+          dataIndex="id"
+          title="Actions"
+          fixed="right"
+          render={(value) => (
             <Space>
-              <CustomAvatar shape="square" name={record.name} src={record.avatarUrl}/>
-              <Text style={{ whiteSpace: 'nowrap'}}>
-                {record.name}
-              </Text>
+              <EditButton hideText size="small" recordItemId={value} />
+              <DeleteButton hideText size="small" recordItemId={value} />
             </Space>
           )}
         />
-      <Table.Column<Company> 
-        dataIndex="totalRevenue"
-        title="Open deals amount"
-        render={(value, company) => (
-          <Text>
-            {currencyNumber(company?.dealsAggregate?.[0].sum?.value || 0 )}
-          </Text>
-        )}
-      />
-
-      <Table.Column<Company> 
-        dataIndex="id"
-        title="Actions"
-        fixed="right"
-        render={(value) => (
-          <Space>
-            <EditButton hideText size="small" recordItemId={value} />
-            <DeleteButton hideText size="small" recordItemId={value} />
-          </Space>
-        )}
-      />
-
-
-      </Table>
-
+        </Table>
     </List>
+    {children}
+    </div>
   )
 }
 
