@@ -3,7 +3,8 @@
 ## Introduction
 
 Welcome to Refine-dashboard, a project built to organize my professional tasks such as project management, job search tasks, and more.
-<img width="1410" alt="image" src="https://github.com/sumtzehern/refine-dashboard/assets/77678835/71de4d36-da41-4fcc-840f-f134d0bd75cf">
+<img width="1410" alt="image" src="https://github.com/sumtzehern/refine-dashboard/assets/77678835/fdcc0254-353a-4162-810c-7500727a1451">
+
 
 
 ## Tech Stack
