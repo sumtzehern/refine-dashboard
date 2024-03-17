@@ -80,7 +80,7 @@ export const resources: IResourceItem[ ] = [
         create: "/quest/ticket/create",
         edit: "/quest/ticket/edit/:id",
         meta: {
-          label: "Quest Board",
+          label: "Job Search",
           parent: "job",
         },
       },

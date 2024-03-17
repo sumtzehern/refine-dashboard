@@ -13,3 +13,12 @@ export {
     UpcomingEventsSkeleton, AccordionHeaderSkeleton, 
     KanbanColumnSkeleton, LatestActivitiesSkeleton, ProjectCardSkeleton
 };
+export * from "./accordion";
+export * from "./tasks/form/description";
+export * from "./tasks/form/due-date";
+export * from "./tasks/form/header";
+export * from "./tasks/form/stage";
+export * from "./tasks/form/title";
+export * from "./tasks/form/users";
+export * from "./text"
+export * from "./tags/user-tags";
